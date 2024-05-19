@@ -3,11 +3,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 public class LoginPage {
-    private WebDriver driver;
-    private By emailInputLocator = By.name("email");
-    private By passwordInputLocator = By.name("password");
-    private By loginButtonLocator = By.xpath("//input[@type='submit']");
-    private By forgotPasswordLinkLocator = By.linkText("Forgotten Password");
+    private final WebDriver driver;
+    private final  By emailInputLocator = By.name("email");
+    private final By passwordInputLocator = By.name("password");
+    private final By loginButtonLocator = By.xpath("//input[@type='submit']");
+    private final By forgotPasswordLinkLocator = By.linkText("Forgotten Password");
+    private final By logoutLinkLocator = By.linkText("Logout");
 
     public LoginPage(WebDriver driver){
         this.driver = driver;
@@ -40,4 +41,9 @@ public class LoginPage {
     public String getForgotPasswordPageUrl(){
         return driver.getCurrentUrl();
     }
+
+    public boolean checkLogoutLink(){
+        return driver.findElement(logoutLinkLocator).isDisplayed();
+    }
 }
+
