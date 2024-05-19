@@ -24,5 +24,5 @@ Feature: Login Functionality for OpenCart E-Commerce Website
       | valid@gmail.com   | abc             | Error: No match for E-mail Address and /or Password.  |
 
   Scenario: Navigating to Forgot password page
-    When I click on the "Forgotten Password" link
+    When I click on the Forgotten Password link
     Then I should be redirected to the password reset page

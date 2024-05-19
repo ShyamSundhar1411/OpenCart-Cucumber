@@ -51,21 +51,25 @@ public class LoginPageStepDef {
     }
 
     @Given("I have entered invalid {string} and {string}")
-    public void iHaveEnteredInvalidAnd(String arg0, String arg1) {
+    public void iHaveEnteredInvalidAnd(String email, String password) {
+        loginPage.enterEmail(email);
+        loginPage.enterPassword(password);
         
     }
 
     @Then("I should see an error message indicating {string}")
-    public void iShouldSeeAnErrorMessageIndicating(String arg0) {
-        
+    public void iShouldSeeAnErrorMessageIndicating(String errorMessage) {
+        Assert.assertTrue(driver.findElement(By.cssSelector(".alert-danger")).isDisplayed());
     }
 
-    @When("I click on the {string} link")
-    public void iClickOnTheLink(String arg0) {
-        
+    @When("I click on the Forgotten Password link")
+    public void iClickOnTheForgottenPasswordLink(){
+        loginPage.clickForgetPassword();
     }
 
     @Then("I should be redirected to the password reset page")
     public void iShouldBeRedirectedToThePasswordResetPage() {
+        Assert.assertTrue(loginPage.getForgotPasswordPageUrl().contains("account/forgotten"));
+
     }
 }
