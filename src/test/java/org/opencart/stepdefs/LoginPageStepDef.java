@@ -21,7 +21,11 @@ public class LoginPageStepDef {
     @After
     public void tearDown(){
         if(driver!=null){
-            driver.quit();
+            try {
+                Thread.sleep(3000); // Delay for 5 seconds
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 

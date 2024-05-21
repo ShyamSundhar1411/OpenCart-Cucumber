@@ -4,3 +4,8 @@ Feature: Register Functionality of Open E-Cart
   by passing valid credentials
   Background:
     Given I am on the register page
+
+  Scenario: Successful registration with valid credentials
+    Given I have entered valid credentials for registration
+    When I click on register button
+    Then I should be registered successfully
