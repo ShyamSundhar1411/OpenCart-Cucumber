@@ -12,7 +12,8 @@ public class RegisterPage {
     private final By confirmPasswordInputLocator = By.name("confirm");
     private final By privacyInputLocator = By.xpath("//input[@type='checkbox' and @name='agree']");
     private final By registerButtonLocator = By.xpath("//input[@type='submit']");
-    RegisterPage(WebDriver driver){
+    private final By logoutButtonLocator = By.linkText("logout");
+    public RegisterPage(WebDriver driver){
         this.driver = driver;
     }
     public void enterFirstName(String firstName){
@@ -47,5 +48,7 @@ public class RegisterPage {
         WebElement registerButton = driver.findElement(registerButtonLocator);
         registerButton.click();
     }
-
+    public boolean checkLogoutButton(){
+        return driver.findElement(logoutButtonLocator).isDisplayed();
+    }
 }
