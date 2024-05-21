@@ -53,4 +53,5 @@ public class RegisterPage {
     public boolean checkLogoutButton(){
         return driver.findElement(logoutButtonLocator).isDisplayed();
     }
+
 }

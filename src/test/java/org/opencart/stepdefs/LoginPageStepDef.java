@@ -26,6 +26,7 @@ public class LoginPageStepDef {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            driver.quit();
         }
     }
 

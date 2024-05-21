@@ -13,7 +13,7 @@ Feature: Login Functionality for OpenCart E-Commerce Website
     Then I should be logged in successfully
 
   Scenario Outline: Unsuccessful login with invalid or empty credentials
-    Given I have entered invalid "<username" and "<password>"
+    Given I have entered invalid "<username>" and "<password>"
     When I click on the login button
     Then I should see an error message indicating "<error_message>"
 
