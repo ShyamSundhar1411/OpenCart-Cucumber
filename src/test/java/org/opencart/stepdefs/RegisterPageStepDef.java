@@ -11,15 +11,26 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
 
 public class RegisterPageStepDef {
     private WebDriver driver;
     private RegisterPage registerPage;
     private Faker faker;
+    private Properties properties;
     @Before
     public void setup(){
         driver = new ChromeDriver();
         faker = new Faker();
+        properties = new Properties();
+        try {
+            FileInputStream input = new FileInputStream("src/test/resources/config.properties");
+            properties.load(input);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     @After
     public void tearDown(){
@@ -32,7 +43,8 @@ public class RegisterPageStepDef {
     }
     @Given("I am on the register page")
     public void iAmOnTheRegisterPage() {
-        driver.get("https://naveenautomationlabs.com/opencart/index.php?route=account/register");
+        String registerUrl = properties.getProperty("register.url");
+        driver.get(registerUrl);
         registerPage = new RegisterPage(driver);
     }
 

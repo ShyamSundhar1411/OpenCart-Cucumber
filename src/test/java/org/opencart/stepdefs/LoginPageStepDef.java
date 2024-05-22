@@ -8,14 +8,25 @@ import org.opencart.pages.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
 import org.testng.Assert;
 public class LoginPageStepDef {
     private WebDriver driver;
     private LoginPage loginPage;
+    private Properties properties;
 
     @Before
     public void setup(){
         driver = new ChromeDriver();
+        properties = new Properties();
+        try {
+            FileInputStream input = new FileInputStream("src/test/resources/config.properties");
+            properties.load(input);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @After
@@ -32,7 +43,8 @@ public class LoginPageStepDef {
 
     @Given("I am on OpenCart login page")
     public void iAmOnOpenCartLoginPage() {
-        driver.get("https://naveenautomationlabs.com/opencart/index.php?route=account/login");
+        String loginUrl = properties.getProperty("login.url");
+        driver.get(loginUrl);
         loginPage = new LoginPage(driver);
     }
 
