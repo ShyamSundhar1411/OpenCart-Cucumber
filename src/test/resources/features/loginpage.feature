@@ -1,3 +1,4 @@
+@Login
 Feature: Login Functionality for OpenCart E-Commerce Website
 
     As a user of the OpenCart website

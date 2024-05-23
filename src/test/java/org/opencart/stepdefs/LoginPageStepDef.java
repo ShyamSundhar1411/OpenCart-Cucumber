@@ -67,6 +67,13 @@ public class LoginPageStepDef {
         
     }
 
+    @When("I login with my credentials")
+    public void iLoginWithMyCredentials() {
+        loginPage.enterEmail("qatestertest@gmail.com");
+        loginPage.enterPassword("Test@123");
+        loginPage.clickLoginButton();
+    }
+
     @Given("I have entered invalid {string} and {string}")
     public void iHaveEnteredInvalidAnd(String email, String password) {
         loginPage.enterEmail(email);
